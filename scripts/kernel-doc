@@ -153,12 +153,14 @@ my $show_not_found = 0;	# No longer used
 my @export_file_list;
 
 my @build_time;
-if (defined($ENV{'KBUILD_BUILD_TIMESTAMP'}) &&
-    (my $seconds = `date -d"${ENV{'KBUILD_BUILD_TIMESTAMP'}}" +%s`) ne '') {
-    @build_time = gmtime($seconds);
-} else {
-    @build_time = localtime;
-}
+chomp(my $seconds = `date -d"Wed Mar 12 13:40:07 UTC 2025" +%s`);
+@build_time = gmtime($seconds);
+#if (defined($ENV{'KBUILD_BUILD_TIMESTAMP'}) &&
+#    (my $seconds = `date -d"${ENV{'KBUILD_BUILD_TIMESTAMP'}}" +%s`) ne '') {
+#    @build_time = gmtime($seconds);
+#} else {
+#    @build_time = localtime;
+#}
 
 my $man_date = ('January', 'February', 'March', 'April', 'May', 'June',
 		'July', 'August', 'September', 'October',
